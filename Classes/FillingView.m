@@ -22,8 +22,19 @@
 
 - (void)drawRect:(CGRect)rect {
     // Drawing code
-    [[UIColor blueColor] setFill];
-    UIRectFill(rect);
+//    [[UIColor blueColor] setFill];
+//    UIRectFill(rect);
+    
+    CGMutablePathRef path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL, 10.0f, 10.0f);
+    CGPathAddLineToPoint(path, NULL, 100.0f, 10.0f);
+    CGPathAddLineToPoint(path, NULL, 100.0f, 100.0f);
+    CGPathAddLineToPoint(path, NULL, 10.0f, 100.0f);
+    CGPathCloseSubpath(path);
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(ctx, [UIColor blueColor].CGColor);
+    CGContextAddPath(ctx, path);
+    CGContextFillPath(ctx);
 }
 
 
