@@ -44,9 +44,24 @@
     return imutablePath;
 }
 
+- (void)drawSquare {
+    CGMutablePathRef path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL, 10.0f, 10.0f);
+    CGPathAddLineToPoint(path, NULL, 100.0f, 10.0f);
+    CGPathAddLineToPoint(path, NULL, 100.0f, 100.0f);
+    CGPathAddLineToPoint(path, NULL, 10.0f, 100.0f);
+    CGPathCloseSubpath(path);
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(ctx, [UIColor blueColor].CGColor);
+    CGContextAddPath(ctx, path);
+    CGContextFillPath(ctx);
+}
+
 
 - (void)drawRect:(CGRect)rect {
     // Drawing code
+
+    [self drawSquare];
     
     CGSize size = self.bounds.size;
     
@@ -58,15 +73,17 @@
     // bar height is 0.2 * view height    
     CGFloat height = size.height * 0.2f;
     
+    float yOffset = 40.0f;
+    
     //           CGRectMake(x, y, width, height)
-    CGRect one = CGRectMake(0.0f, (height + 5.0f), width1, height - 10.0f);
-    CGRect oneText = CGRectMake(10.0f, height + 25.0f, width1, height - 30.0f);
+    CGRect one = CGRectMake(0.0f, (height + 5.0f) + yOffset, width1, height - 10.0f);
+    CGRect oneText = CGRectMake(10.0f, height + 25.0f + yOffset, width1, height - 30.0f);
     
-    CGRect two = CGRectMake(0.0f, 2.0f * (height + 5.0f), width2, height - 10.0f);
-    CGRect twoText = CGRectMake(10.0f, (2.0f * height) + 30.0f, width2, height - 30.0f);
+    CGRect two = CGRectMake(0.0f, 2.0f * (height + 5.0f) + yOffset, width2, height - 10.0f);
+    CGRect twoText = CGRectMake(10.0f, (2.0f * height) + 30.0f + yOffset, width2, height - 30.0f);
     
-    CGRect three = CGRectMake(0.0f, 3.0f * (height + 5.0f), width3, height - 10.0f);
-    CGRect threeText = CGRectMake(10.0f, (3.0f * height) + 35.0f, width3, height - 30.0f);
+    CGRect three = CGRectMake(0.0f, 3.0f * (height + 5.0f) + yOffset, width3, height - 10.0f);
+    CGRect threeText = CGRectMake(10.0f, (3.0f * height) + 35.0f + yOffset, width3, height - 30.0f);
     
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     
