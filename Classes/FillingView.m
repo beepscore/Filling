@@ -22,6 +22,8 @@
 
 - (void)drawRect:(CGRect)rect {
     // Drawing code
+    [[UIColor blueColor] setFill];
+    UIRectFill(rect);
 }
 
 
