@@ -19,8 +19,10 @@
     return self;
 }
 
+
 // refactor / rename pathInRect to newPathInRect to eliminate Clang warning by following naming convention
 // Ref http://moodle.extn.washington.edu/mod/forum/discuss.php?d=4779
+// http://stackoverflow.com/questions/1779966/how-do-i-release-this-cgpath-when-i-need-to-return-it
 - (CGPathRef)newPathInRect:(CGRect)rect {
     CGMutablePathRef path = CGPathCreateMutable();
 
@@ -57,6 +59,7 @@
     CGContextSetFillColorWithColor(ctx, [UIColor blueColor].CGColor);
     CGContextAddPath(ctx, path);
     CGContextFillPath(ctx);
+    CGPathRelease(path);
 }
 
 
