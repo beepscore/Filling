@@ -19,7 +19,9 @@
     return self;
 }
 
-- (CGPathRef)pathInRect:(CGRect)rect {
+// refactor / rename pathInRect to newPathInRect to eliminate Clang warning by following naming convention
+// Ref http://moodle.extn.washington.edu/mod/forum/discuss.php?d=4779
+- (CGPathRef)newPathInRect:(CGRect)rect {
     CGMutablePathRef path = CGPathCreateMutable();
 
     // radius of rounded end is half bar height
@@ -88,7 +90,7 @@
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     
     [[UIColor blueColor] setFill];
-    CGPathRef pathOne = [self pathInRect:one];
+    CGPathRef pathOne = [self newPathInRect:one];
     CGContextAddPath(ctx, pathOne);
     CGPathRelease(pathOne);
     CGContextFillPath(ctx);
@@ -96,7 +98,7 @@
     [@"One" drawInRect:oneText withFont:[UIFont systemFontOfSize:34]];
     
     [[UIColor redColor] setFill];
-    CGPathRef pathTwo = [self pathInRect:two];
+    CGPathRef pathTwo = [self newPathInRect:two];
     CGContextAddPath(ctx, pathTwo);
     CGPathRelease(pathTwo);
     CGContextFillPath(ctx);
@@ -104,7 +106,7 @@
     [@"Two" drawInRect:twoText withFont:[UIFont systemFontOfSize:34]];
     
     [[UIColor yellowColor] setFill];
-    CGPathRef pathThree = [self pathInRect:three];
+    CGPathRef pathThree = [self newPathInRect:three];
     CGContextAddPath(ctx, pathThree);
     CGPathRelease(pathThree);
     CGContextFillPath(ctx);
