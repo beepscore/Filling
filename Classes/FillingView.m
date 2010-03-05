@@ -88,7 +88,7 @@
     // bar height is 0.2 * view height    
     CGFloat height = size.height * 0.2f;
     
-    float yOffset = 40.0f;
+    CGFloat yOffset = 40.0f;
     
     //           CGRectMake(x, y, width, height)
     CGRect one = CGRectMake(0.0f, (height + 5.0f) + yOffset, width1, height - 10.0f);
